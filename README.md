@@ -26,9 +26,9 @@ Your game is then at `https://<your-app>` and friend links look like `https://<y
   or types the code under Join With Code. Friendly matches don't change your rank. Rematch after each match.
 
 ## The league
-Bronze, Silver, Gold, Platinum, Diamond (divisions III > II > I, 100 Bean Points each), then **Bean Baron**
-(open ladder). The top 10 Barons hold the **Golden Crown**.
-- 5 placement matches seed you (up to Gold II) from your hidden skill.
+Seed, Sprout, Vine, Stalk, Cloud (divisions III > II > I, 100 Bean Points each), then **Giant**
+(open ladder). The top 10 Giants hold the **Golden Goose**.
+- 5 placement matches seed you (up to Vine II) from your hidden skill.
 - Win about +20 BP, lose about -19; your hidden skill vs your division shifts that by up to ~10.
 - **Hot Streak**: 3+ wins in a row = bonus BP and a flaming badge.
 - **Shell Shield**: after a promotion you can't drop for 3 games.
@@ -46,3 +46,18 @@ API: `GET /api/leaderboard`, `GET /api/status`.
 - Every key press goes through the server: on a distant server you'll feel the ping. Next step is client-side prediction.
 - Accounts are guest tokens saved in the browser (no email login yet).
 - Character unlocks are stored in each player's browser and aren't checked by the server.
+
+## Pages
+- `/` the game. Top bar: Play, Leaderboard, My Account, and your account badge (level, XP, rank).
+- `/#/leaderboard` the ranked ladder (filter by rank, search).
+- `/#/profile` your account: Overview, Ranked, Match History, Customize (character, frame, title, name, motto). `/#/profile/<id>` anyone else.
+- `/#room-XXXXX` friend room link.
+All pages work with the arrow keys (Enter picks, Esc goes back) and the mouse.
+
+## API
+- `GET /api/leaderboard` placed players, best first
+- `GET /api/profile/<id>` public profile, stats and last 25 matches
+- `GET /api/me` / `POST /api/me` (header `x-token`) your own profile; POST takes `{ name, motto, avatar }`
+- `GET /api/status` players online, in queue, live matches
+
+Opening the game in a second tab of the same browser plays as a separate guest, so you can test friend rooms against yourself.
